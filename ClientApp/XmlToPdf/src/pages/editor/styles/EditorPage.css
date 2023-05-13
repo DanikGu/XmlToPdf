@@ -1,0 +1,112 @@
+.editorPage {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    top: 0;
+    left: 0;
+}
+.sidebar {
+    width: 20rem;
+    height: 100%;
+    background-color: var(--secondary-backround);
+    box-shadow: var(--default-shadow);
+}
+.preview {
+    width:100%;
+    height: 100%;
+}
+.top-right-toolbar {
+    z-index: 1;
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.top-right-toolbar-button {
+    
+    border: 0;
+    background-color: var(--secondary-backround);
+    width: 2.2rem;
+    height: 2.2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--default-border-rad);
+}
+.top-right-toolbar-button:hover {
+    box-shadow: var(--default-shadow);
+}
+.top-right-toolbar-button:active {
+    box-shadow: var(--active-sghadow);
+}
+.top-right-toolbar-button img {
+    width: 100%;
+}
+.xml-code-editor {
+    z-index: 0;
+    position: absolute;
+    height: 100%;
+    width: 50vw;
+    right: 0;
+    top: 0;
+    box-shadow: var(--default-shadow);
+    background-color: var(--secondary-backround);
+}
+.monaco-editor {
+    --vscode-editor-background: var(--secondary-backround) !important;
+    --vscode-editorGutter-background: var(--secondary-backround) !important ;
+    --vscode-editorStickyScrollHover-background: var(--secondary-backround) !important;
+}
+.tool-bar {
+    background-color: var(--main-header);
+    width: 100%;
+    height: 8vh;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    padding-left: 25px;
+    box-sizing: border-box;
+    gap: 25px;
+}
+.tool-bar button {
+    z-index: 1;
+    right: 20px;
+    top: 10px;
+    border: 0;
+    background-color: var(--secondary-backround);
+    width: 2.2rem;
+    height: 2.2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--default-border-rad);
+    color: var(--text-color-dark);
+}
+.tool-bar button img{
+    width: 100%;
+}
+.preview {
+    overflow-y: hidden;
+}
+.preview iframe {
+    height: 100%;
+    border: none;
+    width: 100%;
+    height: 100%;
+}
+
+.rejt-tree {
+    margin-top:10px;
+    margin-left:15px;
+}
+.rejt-tree {
+    height: calc(92vh - 10px);
+    max-height: 92vh;
+    overflow: auto;
+}

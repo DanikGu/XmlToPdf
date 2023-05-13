@@ -1,0 +1,36 @@
+.treeButton {
+    border: none;
+    padding: 0;
+    display: flex;
+    margin-right: 3px;
+    margin-left: 3px;
+    align-items: end;
+    justify-content: center;
+    height: 20px;
+    width: 20px;
+}
+input {
+    border: 0;
+}
+.treeButton img {
+    height: 20px;
+}
+.treeButton:hover {
+    box-shadow: var(--default-shadow);
+}
+.treeButton:active {
+    box-shadow: var(--active-sghadow);
+}
+.rejt-edit-form {
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+}
+.rejt-value-node {
+    display: flex;
+    flex-direction: row;
+}
+.rejt-add-value-node {
+    display: flex;
+    flex-direction: row;
+}

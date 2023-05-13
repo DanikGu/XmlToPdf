@@ -1,0 +1,63 @@
+.login-form-box {
+    background-color: var(--secondary-backround);
+    position: relative;
+    resize: both;
+    overflow: hidden;
+    position: relative;
+    width: 30rem;
+    height: 20rem;
+    display: block;
+    gap: 5px;
+    box-shadow: var(--default-shadow);
+    border-radius: var(--default-border-rad);
+}
+.sign-up-form-box {
+    height: 26rem;
+}
+.input-conatiner {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.input-conatiner * {
+    width: inherit;
+}
+.input-conatiner label {
+    align-items: left;
+}
+.input-conatiner label,
+.input-conatiner .xtp-input-container
+.input-conatiner .xtp-input-container input {
+    border: none;
+}
+.login-form-box-header {
+    background: var(--main-header);
+    color: var(--text-color-light);
+    padding: var(--default-padding);
+    padding-left: var(--default-padding-side);
+    width: 100% ;
+}
+.buttonContainer {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 1rem;
+}
+.buttonContainer button {
+    border: none;
+    background-color: var(--third-backround);
+    padding: var(--default-padding);
+    cursor: pointer;
+    font-size: var(--h5-size);
+}
+.form {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    height: 100%;
+    gap: 1rem;
+    padding-top: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+    
+}

@@ -1,0 +1,95 @@
+<fo:root xml:lang="en" font-family="serif" font-size="10pt" line-height="1.4" xmlns:fo="http://www.w3.org/1999/XSL/Format" >
+<fo:layout-master-set>
+<fo:simple-page-master page-height="297mm" page-width="210mm" margin-top="10mm" margin-left="20mm" margin-right="20mm" margin-bottom="10mm" master-name="PageMaster1">
+<fo:region-after extent="7mm" />
+<fo:region-body margin-top="0mm" margin-left="0mm" margin-right="0mm" margin-bottom="10mm" />
+</fo:simple-page-master>
+</fo:layout-master-set>
+<fo:declarations>
+
+</fo:declarations>
+<fo:page-sequence master-reference="PageMaster1">
+<fo:static-content flow-name="xsl-region-after">
+<fo:block font-size="0.8em" text-align="right" color="green" >
+<fo:basic-link external-destination="https://www.antennahouse.com/">Antenna House, Inc.</fo:basic-link>
+</fo:block>
+</fo:static-content>
+<fo:flow flow-name="xsl-region-body"  hyphenate="true">
+<fo:block span="all" font-family="sans-serif" font-size="2em" font-weight="bold" padding-before="0.3em" padding-after="0.3em" space-before="1em" space-after="1em" space-before.conditionality="retain" space-after.conditionality="retain" background-color="EEEEEE" hyphenate="false" line-height-shift-adjustment="disregard-shifts">
+<fo:block start-indent="1em" end-indent="1em" >Index</fo:block>
+</fo:block>
+<fo:block span="all" space-before="1em" space-after="1em" space-after.conditionality="retain" text-indent="0em" border="1pt solid 9999FF" start-indent="0.5em" end-indent="0.5em" padding="0.5em" text-align="justify" line-height-shift-adjustment="disregard-shifts">By using ‘index-key’ property, a key value is specified as an index term to be used in an index. Put the index-term in the place where an index is generated in an actual document, and then place &lt;<fo:basic-link external-destination="https://www.w3.org/TR/xsl11/fo_index-page-citation-list" >fo:index-page-citation-list</fo:basic-link>&gt;. &lt;<fo:basic-link external-destination="https://www.w3.org/TR/xsl11/fo_index-page-citation-list" >fo:index-page-citation-list</fo:basic-link>&gt; enumerates &lt;<fo:basic-link external-destination="https://www.w3.org/TR/xsl11/fo_index-key-reference" >fo:index-key-reference</fo:basic-link>&gt; as a child element of it. &lt;<fo:basic-link external-destination="https://www.w3.org/TR/xsl11/fo_index-key-reference" >fo:index-key-reference</fo:basic-link>&gt; shows the page number to which the index term belongs. By using the ‘ref-index-key’ property, a key value of an index term is specified. Also, whether the reference page is shown as a hyperlink can be specified with the ‘page-number-treatment’ property.</fo:block>
+   <fo:block>In this sample, the FOs with the ‘index-key’ property are indicated with underlined text. </fo:block>
+   <fo:block font-size="1.5em" text-align="justify">
+   <fo:block font-size="1.8em" font-weight="bold" color="blue" text-decoration="underline" index-key="title-1">TITLE 1.</fo:block>
+   <fo:block><fo:inline color="blue" text-decoration="underline" index-key="lorem ipsum">Lorem ipsum</fo:inline> dolor sit amet, consectetur adipiscing elit. Aliquam bibendum tincidunt pharetra. Aenean ultricies molestie ante, sit amet ultricies nunc mollis id. Integer ut porttitor felis, vel tincidunt velit. Duis volutpat, quam quis aliquet tristique, nulla dui malesuada velit, et consectetur tellus ipsum et arcu. Ut tincidunt lorem erat, at elementum nibh varius consectetur. Sed viverra metus quis nibh pulvinar, at dignissim nibh adipiscing. Duis sit amet ipsum non elit tincidunt sagittis ac non tortor. Mauris commodo, elit a imperdiet interdum, nulla velit viverra elit, at scelerisque urna est eget lacus.</fo:block>
+    <fo:block space-before="1em">Integer eu lobortis neque. Donec malesuada sed arcu vitae fringilla. Quisque imperdiet tortor iaculis, pulvinar neque sit amet, aliquet massa. Sed sed auctor purus. Amus nec turpis elementum, iaculis lorem in, pellentesque metus. <fo:inline color="blue" text-decoration="underline" index-key="ut-b">Ut blandit</fo:inline> tortor mi, ac bibendum felis varius vitae. Duis volutpat, quam quis aliquet tristique, nulla dui malesuada velit, et consectetur tellus ipsum et arcu. Ut tincidunt lorem erat, at elementum nibh varius consectetur. Sed viverra metus quis nibh pulvinar, at dignissim nibh adipiscing. Duis sit amet ipsum non elit tincidunt sagittis ac non tortor. Mauris commodo, elit a imperdiet interdum, nulla velit viverra elit, at scelerisque urna est eget lacus. Integer eu lobortis neque. Donec malesuada sed arcu vitae fringilla. Ut tincidunt lorem erat, at elementum nibh varius consectetur. Sed viverra metus quis nibh pulvinar, at dignissim nibh adipiscing. Duis sit amet ipsum non elit tincidunt sagittis ac non tortor. Mauris commodo, elit a imperdiet interdum, nulla velit viverra elit, at scelerisque urna est eget lacus.</fo:block>
+   <fo:block space-before="1em" font-size="1.8em" font-weight="bold" color="blue" text-decoration="underline" index-key="title-2" keep-with-next="always">TITLE 2.</fo:block>
+   <fo:block>Quisque imperdiet tortor iaculis, pulvinar neque sit amet, aliquet massa. Sed sed auctor purus. <fo:inline color="blue" text-decoration="underline" index-key="vivamus">Vivamus</fo:inline> nec turpis elementum, iaculis lorem in, pellentesque metus. <fo:inline color="blue" text-decoration="underline" index-key="ut-b">Ut blandit</fo:inline> tortor mi, ac bibendum felis varius vitae. Duis volutpat, quam quis aliquet tristique, nulla dui malesuada velit, et consectetur tellus ipsum et arcu. Ut tincidunt lorem erat, at elementum nibh varius consectetur. Sed viverra metus quis nibh pulvinar, at dignissim nibh adipiscing. <fo:inline color="blue" text-decoration="underline" index-key="lorem ipsum">Lorem ipsum</fo:inline> dolor sit amet, consectetur adipiscing elit. Aliquam bibendum tincidunt pharetra. Aenean ultricies molestie ante, sit amet ultricies nunc mollis id. Integer ut porttitor felis, vel tincidunt velit. Duis volutpat, quam quis aliquet tristique, nulla dui malesuada velit, et consectetur tellus ipsum et arcu. blandit tortor mi, ac bibendum felis varius vitae. </fo:block>
+  </fo:block>
+
+<fo:block-container position="absolute" bottom="0" display-align="after">
+  <fo:block font-size="1.5em">Index</fo:block>
+  <fo:block-container display-align="auto" font-size="1.0em" space-before="0.5em" start-indent="5pt" end-indent="5pt" border="solid 7777FF 1pt" padding="4pt" column-count="2" column-gap="8pt" >
+
+   <fo:block>When ‘page-number-treatment’ is not specified</fo:block>
+   <fo:block space-before="0.5em" text-align-last="justify">
+    <fo:block>Lorem ipsum<fo:leader leader-pattern="dots" space-start="0.1em"></fo:leader>
+     <fo:index-page-citation-list>
+      <fo:index-key-reference ref-index-key="lorem ipsum"></fo:index-key-reference>
+     </fo:index-page-citation-list>
+    </fo:block>
+    <fo:block>TITLE 1.<fo:leader leader-pattern="dots" space-start="0.1em"></fo:leader><fo:index-page-citation-list>
+      <fo:index-key-reference ref-index-key="title-1"></fo:index-key-reference>
+     </fo:index-page-citation-list>
+    </fo:block>
+    <fo:block>TITLE 2.<fo:leader leader-pattern="dots" space-start="0.1em"></fo:leader>
+     <fo:index-page-citation-list>
+      <fo:index-key-reference ref-index-key="title-2"></fo:index-key-reference>
+     </fo:index-page-citation-list>
+    </fo:block>
+    <fo:block>Ut blandit<fo:leader leader-pattern="dots" space-start="0.1em"></fo:leader>
+     <fo:index-page-citation-list>
+      <fo:index-key-reference ref-index-key="ut-b"></fo:index-key-reference>
+     </fo:index-page-citation-list>
+    </fo:block>
+    <fo:block>Vivamus<fo:leader leader-pattern="dots" space-start="0.1em"></fo:leader>
+     <fo:index-page-citation-list>
+      <fo:index-key-reference ref-index-key="vivamus"></fo:index-key-reference>
+     </fo:index-page-citation-list>
+    </fo:block>
+   </fo:block>
+
+   <fo:block font-size="0.9em">When <fo:inline font-family="sans-serif" font-size="0.9em" >page-number-treatment="link"</fo:inline> is specified</fo:block>
+   <fo:block space-before="0.5em" text-align-last="justify" page-number-treatment="link">
+    <fo:block>Lorem ipsum<fo:leader leader-pattern="dots" space-start="0.1em"></fo:leader>
+     <fo:index-page-citation-list>
+      <fo:index-key-reference ref-index-key="lorem ipsum"></fo:index-key-reference>
+     </fo:index-page-citation-list>
+    </fo:block>
+    <fo:block>TITLE 1.<fo:leader leader-pattern="dots" space-start="0.1em"></fo:leader>
+     <fo:index-page-citation-list>
+      <fo:index-key-reference ref-index-key="title-1"></fo:index-key-reference>
+     </fo:index-page-citation-list>
+    </fo:block>
+    <fo:block>TITLE 2.<fo:leader leader-pattern="dots" space-start="0.1em"></fo:leader>
+     <fo:index-page-citation-list>
+      <fo:index-key-reference ref-index-key="title-2"></fo:index-key-reference>
+     </fo:index-page-citation-list>
+    </fo:block>
+    <fo:block>Ut blandit<fo:leader leader-pattern="dots" space-start="0.1em"></fo:leader>
+     <fo:index-page-citation-list>
+      <fo:index-key-reference ref-index-key="ut-b"></fo:index-key-reference>
+     </fo:index-page-citation-list>
+    </fo:block>
+    <fo:block>Vivamus<fo:leader leader-pattern="dots" space-start="0.1em"></fo:leader>
+     <fo:index-page-citation-list>
+      <fo:index-key-reference ref-index-key="vivamus"></fo:index-key-reference>
+     </fo:index-page-citation-list>
+    </fo:block>
+   </fo:block>
+  </fo:block-container>
+</fo:block-container>
+ </fo:flow>
+</fo:page-sequence>
+</fo:root>

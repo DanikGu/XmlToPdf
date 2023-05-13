@@ -1,0 +1,23 @@
+html {
+    background-color: rgb(237, 255, 255);
+}
+body {
+    background-color: #FFF;
+    box-sizing: border-box;
+    width: var(--width);
+    height: var(--height);
+    padding-top:   var(--padding-top);
+    padding-left:  var(--padding-left);
+    padding-right: var(--padding-right);
+    margin-left: auto;
+    margin-right: auto;
+    zoom: var(--scale);
+    -moz-transform: scale(var(--scale));
+    -moz-transform-origin: 0 0;
+    -o-transform: scale(var(--scale));
+    -o-transform-origin: 0 0;
+    -webkit-transform: scale(var(--scale));
+    -webkit-transform-origin: 0 0;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2)
+}
+ 

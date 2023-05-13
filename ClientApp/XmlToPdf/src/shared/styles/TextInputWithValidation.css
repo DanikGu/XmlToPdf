@@ -1,0 +1,10 @@
+.tbv-error {
+    font-size: calc(var(--h6-size)/1.1);
+    color: var(--main-error)
+}
+.tbv-input-container {
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}

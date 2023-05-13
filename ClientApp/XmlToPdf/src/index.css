@@ -1,0 +1,184 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@300;400&display=swap');
+:root {
+  --main-backround: rgb(237, 255, 255);
+  --secondary-backround: rgb(173, 210, 199);
+  --third-backround: rgb(98, 186, 171);
+  --text-color-dark: rgba(1, 1, 1, 1);
+  --text-color-light:rgba(255, 255, 255, 1);
+  --main-header:rgba(0, 70, 67, 1);
+  --main-error: rgb(121, 0, 0);
+  --default-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+  --hover-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+  --active-sghadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
+  --default-border-rad: 4px;
+  --h1-size: 2rem;
+  --h2-size: 1.5rem;
+  --h3-size: 1.25rem;
+  --h4-size: 1.125rem;
+  --h5-size: 1rem;
+  --h6-size: 0.875rem;
+  --default-padding: 2% 4%;
+  --default-padding-side: 0.5rem;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  background-color: var(--main-backround);
+  display: flex;
+  flex-direction: column;
+  color: var(--text-color-dark);
+  font-family: 'Noto Sans Mono', monospace;
+  font-weight: 400;
+}
+.form-box-shadow {
+  box-shadow: var(--default-shadow);
+}
+button:active{
+  box-shadow: var(--main-shadow-inverted) 
+}
+input:focus {
+  outline: none;
+}
+h1 {
+  font-size: var(--h1-size);
+}
+
+h2 {
+  font-size: var(--h2-size);
+}
+
+h3 {
+  font-size: var(--h3-size);
+}
+
+h4 {
+  font-size: var(--h4-size);
+}
+
+h5 {
+  font-size: var(--h5-size);
+}
+
+h6 {
+  font-size: var(--h6-size);
+}
+p {
+  font-size: var(--h5-size);
+}
+label {
+  font-size: var(--h6-size);
+}
+.shadow-box {
+  background-color: var(--secondary-backround);
+  color: var(--text-color-dark);
+  border-radius: var(--default-border-rad);
+  padding: 12px 16px;
+  box-shadow: var(--default-shadow);
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.shadow-box:hover {
+  box-shadow: var(--hover-shadow);
+}
+.shadow-box:focus,
+.shadow-box:active {
+  box-shadow: var(--active-shadow);
+  transform: translateY(1px);
+}
+.default-input {
+  box-shadow: var(--default-shadow);
+  border: none;
+  font-size: var(--h4-size);
+  border-radius: var(--default-border-rad);
+  padding: 4px;
+}
+.default-input:active,
+.default-input:focus {
+  box-shadow: var(--active-sghadow);
+}
+.default-input:hover {
+  box-shadow: var(--hover-shadow);   
+}
+.default-button {
+  box-shadow: var(--default-shadow);
+  border: none;
+  border-radius: var(--default-border-rad);
+}
+.default-button:active,
+.default-button:focus {
+  box-shadow: var(--active-sghadow);
+}
+.default-button:hover {
+  box-shadow: var(--hover-shadow);   
+}
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99;
+}
+
+.dialog {
+  background-color: var(--main-backround);
+  border-radius: var(--default-border-rad);
+  max-width: 90%;
+  box-shadow: var(--active-sghadow);
+  min-width: 300px;
+  max-width: 400px;
+}
+.dialog h5 {
+  margin: 0;
+  background-color: var(--third-backround);
+  border-radius: calc(var(--default-border-rad) / 2);
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  padding: 0.3em;
+  font-weight: 400;
+}
+.dialog p {
+  margin: 0;
+  padding: 0.5em;
+  font-size: var(--h6-size);
+}
+.dialog button {
+  min-width: 40px;
+  min-height: 20px;
+}
+.button-container {
+  display: flex;
+  padding-top: 1em;
+  padding-right: 1em;
+  padding-bottom: 0.5em;
+  gap: 1em;
+  flex-direction: row-reverse;
+}
+.input-container {
+  display: flex;
+  padding-top: 1em;
+  padding-right: 1em;
+  padding-left: 0.5em;
+  padding-bottom: 0.5em;
+  gap: 1em;
+}
+.warning {
+  border: 2px solid #f0ad4e;
+}
+
+.error {
+  border: 2px solid var(--main-error);
+}
+
+.alert {
+  border: 2px solid var(--third-backround);
+}
+
+.dialog {
+  border: 2px solid var(--third-backround);
+}
