@@ -1,12 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;1,100;1,200&display=swap');
 :root {
-  --main-backround: rgb(237, 255, 255);
+  /*--main-backround: rgb(255, 255, 255);
   --secondary-backround: rgb(173, 210, 199);
-  --third-backround: rgb(98, 186, 171);
-  --text-color-dark: rgba(1, 1, 1, 1);
+  --third-backround: #62baab;
+  --fourth-background: rgb(77, 162, 148);
+  --text-color-dark: #363a43;
   --text-color-light:rgba(255, 255, 255, 1);
   --main-header:rgba(0, 70, 67, 1);
-  --main-error: rgb(121, 0, 0);
+  --main-error: rgb(121, 0, 0);*/ 
+  /*use ant color scheme */
   --default-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
   --hover-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
   --active-sghadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
@@ -28,7 +30,7 @@ body {
   display: flex;
   flex-direction: column;
   color: var(--text-color-dark);
-  font-family: 'Noto Sans Mono', monospace;
+  font-family: 'Noto Sans Mono', sans-serif;
   font-weight: 400;
 }
 .form-box-shadow {
@@ -87,30 +89,47 @@ label {
   transform: translateY(1px);
 }
 .default-input {
-  box-shadow: var(--default-shadow);
   border: none;
   font-size: var(--h4-size);
   border-radius: var(--default-border-rad);
   padding: 4px;
+  border: 1px solid var(--third-backround);
 }
 .default-input:active,
 .default-input:focus {
-  box-shadow: var(--active-sghadow);
+  border: 1px solid var(--main-header);
 }
 .default-input:hover {
-  box-shadow: var(--hover-shadow);   
+  border: 1px solid var(--main-header);
 }
 .default-button {
-  box-shadow: var(--default-shadow);
   border: none;
   border-radius: var(--default-border-rad);
+  background-color: var(--third-backround);
+  color: var(--text-color-light);
+  padding: 7px 15px ;
+  cursor: pointer;
+  
 }
 .default-button:active,
 .default-button:focus {
-  box-shadow: var(--active-sghadow);
+  background-color: var(--fourth-background);
 }
 .default-button:hover {
-  box-shadow: var(--hover-shadow);   
+  background-color: var(--fourth-background);
+}
+.default-button-outline {
+  background-color: var(--main-backround);
+  border: 1px solid var(--third-backround);
+  border-radius: var(--default-border-rad);
+  padding: 7px 15px;
+}
+.default-button-outline:active,
+.default-button-outline:focus {
+  border: 1px solid var(--main-header);
+}
+.default-button-outline:hover {
+  border: 1px solid var(--main-header);
 }
 .overlay {
   position: fixed;

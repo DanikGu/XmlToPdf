@@ -146,9 +146,9 @@ namespace XmlToPdfApi.Controllers
 
             return Ok();
         }
-        [HttpDelete("{fileId}")]
+        [HttpDelete("{uniqueFileName}")]
         [Authorize]
-        public async Task<ActionResult> DeleteUserFile(string fileId)
+        public async Task<ActionResult> DeleteUserFile(string uniqueFileName)
         {
             var user = await _userManager.GetUserAsync(User);
 
@@ -158,7 +158,7 @@ namespace XmlToPdfApi.Controllers
             }
 
             var userId = user.Id;
-            var userFile = _userDbContext.SavedFiles.FirstOrDefault(uf => uf.User.Id == userId && uf.UniqueFileName == fileId);
+            var userFile = _userDbContext.SavedFiles.FirstOrDefault(uf => uf.User.Id == userId && uf.UniqueFileName == uniqueFileName);
 
             if (userFile == null)
             {
@@ -166,7 +166,7 @@ namespace XmlToPdfApi.Controllers
             }
 
             var folderPath = Path.Combine("database", "files", userId);
-            var filePath = Path.Combine(folderPath, fileId);
+            var filePath = Path.Combine(folderPath, uniqueFileName);
 
             if (!System.IO.File.Exists(filePath))
             {

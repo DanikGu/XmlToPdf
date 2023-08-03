@@ -4,6 +4,7 @@
     justify-content: space-between;
     padding-bottom: 5%;
     box-sizing: border-box;
+    
 }
 .sidebar button {
     background-color:  var(--main-backround);
@@ -39,18 +40,6 @@ h4 {
     justify-content: space-between;
     padding-left: 15%;
     padding-right: 15%;
-}
-.file-list-tool-bar button {
-    border: 0;
-    background-color:  var(--main-backround);
-    
-    width: 2.2rem;
-    height: 2.2rem;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--text-color-dark)
 }
 .saved-files-container {
     display: flex;

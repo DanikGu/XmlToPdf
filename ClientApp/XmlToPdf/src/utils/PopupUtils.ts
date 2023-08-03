@@ -1,4 +1,4 @@
-import Popup from './Popup';
+import Popup from '../shared/Popup';
 
 class PopupUtils {
   public static alert(text: string): void {

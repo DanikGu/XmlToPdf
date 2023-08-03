@@ -1,7 +1,7 @@
 import React from 'react';
-import LoginForm from './LoginForm';
-import SignUpForm from './SignUpForm';
-import "./styles/LoginPage.css"
+import LoginForm from './components/LoginForm';
+import SignUpForm from './components/SignUpForm';
+import styles from "./styles/LoginPage.module.css"
 
 interface LoginPageProps {
   setToken: (userToken: { token: string; expiration: Date; }) => void
@@ -27,25 +27,24 @@ class LoginPage extends React.Component<LoginPageProps, LoginPageState> {
   render() {
     const { isLogin } = this.state;
     return (
-      
-      <div>
-        <div className='login-page' 
-          style={{ display: isLogin ? "flex" : "none" }}
-        >
-          <LoginForm 
-            switchPageState={this.switchPageState}
-            setToken={this.props.setToken}
-          ></LoginForm>
-        </div>
-        <div className='login-page' 
-        style={{ display: isLogin ? "none" : "flex" }}
-        >
-          <SignUpForm  
-            switchPageState={this.switchPageState}
-            setToken={this.props.setToken}
-          ></SignUpForm>
-        </div>
-      </div>
+      <>
+        {
+          isLogin ? 
+          <div className={styles['login-page']}>
+            <LoginForm 
+              switchPageState={this.switchPageState}
+              setToken={this.props.setToken}
+            ></LoginForm>
+          </div>
+          : 
+          <div className={styles['login-page']}>
+            <SignUpForm  
+              switchPageState={this.switchPageState}
+              setToken={this.props.setToken}
+            ></SignUpForm>
+          </div>
+        }
+      </>
     );
   }
 }

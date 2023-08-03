@@ -1,80 +1,52 @@
-import React, { RefObject } from 'react';
-import TopRightToolBar from "./TopRightToolBar";
+import React, { useState, useRef, useCallback, useEffect  } from 'react';
+import ZoomToolBar from "./components/ZoomToolBar";
 import helloWorldXml from './constants/helloFoObjectTemplate';
-import XmlCodeEditor from './XmlCodeEditor';
-import Preview from './Preview';
+import XmlCodeEditor from './components/XmlCodeEditor';
+import Preview from './components/Preview';
 import './styles/EditorPage.css';
-import SideBarMenu from './SideBarMenu';
-
+import SideBarMenu from './components/SideBarMenu';
+import TopMenu from './components/TopMenu';
+import { FileService } from '@/services';
+import { Spin } from 'antd';
+interface FileItem {
+    uniqueFileName: string;
+    fileName:string;
+    createdOn: Date; 
+}
 interface EditPageProps {}
-interface EditorPageState {
-    isCodeEditorOpened: boolean;
-    editorXml: string;
-}
-class EditorPage extends React.Component<EditPageProps, EditorPageState> {
-    constructor(props: EditPageProps) {
-        super(props);
-        this.state = {
-            isCodeEditorOpened: false,
-            editorXml: helloWorldXml
-        };
-        this.switchEditorState = this.switchEditorState.bind(this);
-        this.setXmlFoToEditor = this.setXmlFoToEditor.bind(this);
-        this.previewRef = React.createRef();
-        this.codeEditorRef = React.createRef();
-    }
-    private previewRef: React.RefObject<Preview>;
-    private codeEditorRef: React.RefObject<XmlCodeEditor>;
-    switchEditorState() {
-        this.setState({
-            isCodeEditorOpened: !this.state.isCodeEditorOpened
-        });
-    }
-    updatePreview(xml: any) {
-        if (!xml) {
-            xml = this.state.editorXml;
-        }
-        this.setState({editorXml: xml})
-        this.previewRef.current?.updatePreview(xml);
-    }
-    zoom(value: number) {
-        this.previewRef.current?.zoom(value);
-    }
-    setXmlFoToEditor(xml: string) {
-        this.codeEditorRef.current?.setEditorText(xml);
-        this.updatePreview(xml);
-    }
-    render() {
-        return (
-            <div className='editorPage'>
-                {
-                    !this.state.isCodeEditorOpened &&
-                    <TopRightToolBar
-                        zoom = {this.zoom.bind(this)}
-                        switchEditorState = {this.switchEditorState}
-                    />
-                }
-                <SideBarMenu
-                    setXmlFoToEditor = {this.setXmlFoToEditor}
-                    getFoXml={() => this.state.editorXml}
-                />
-                <Preview
-                    ref = {this.previewRef}
-                    previewScale = { 1 }
-                    editorXml = {this.state.editorXml}
-                />
-                {
-                    this.state.isCodeEditorOpened &&
-                    <XmlCodeEditor
-                        ref = {this.codeEditorRef}
-                        editorXml = {this.state.editorXml}
-                        switchEditorState = {this.switchEditorState}
-                        updatePreview = {this.updatePreview.bind(this)}
-                        setEditorXml = {(value: string) => this.setState({editorXml: value})}
-                    />
-                }
+const EditorPage: React.FC<EditPageProps> = () => {
+    const [files, setFiles] = useState<FileItem[]>([]);
+    const [isCodeEditorOpened, setIsCodeEditorOpened] = useState<boolean>(false);
+    const [workingFileId, setWorkingFileId] = useState<string>("");
+    const [activeFileId, setActiveFileId] = useState('');
+    const previewZoom = useRef(1);
+    const previewRef = useRef(null);
+    const loadFilesList = useCallback(async () => {
+        let data = await FileService.GetFile();  
+        setFiles(data);
+      }, []);
+    useEffect(() => {
+        loadFilesList();
+    }, [loadFilesList]);
+    
+    const switchEditorState = () => {
+        setIsCodeEditorOpened(prevState => !prevState);
+    };
+    const zoom = (value: number) => {
+        previewZoom.current += value; 
+        (previewRef.current as any)?.updatePreviewScale(previewZoom.current);
+    };
+    return (
+        <div className='editorPage'>
+            { !isCodeEditorOpened && <ZoomToolBar setZoom={zoom} />}
+            <SideBarMenu files={files} activeFileId={activeFileId} setActiveFileId={setActiveFileId}/>
+            <div className='preview-container'>
+                <TopMenu openCodeEditor={switchEditorState} files={files} loadFilesList={loadFilesList} activeFileId={activeFileId} ></TopMenu>
+                <Preview ref={previewRef} previewScale = { previewZoom }/>
             </div>
-        )
-    }
+            { isCodeEditorOpened && <XmlCodeEditor switchEditorState = {switchEditorState} /> }
+        </div>
+    );
 }
+
 export default EditorPage;

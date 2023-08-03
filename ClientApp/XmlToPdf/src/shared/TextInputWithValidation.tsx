@@ -1,12 +1,13 @@
 import React from 'react';
-import "./styles/TextInputWithValidation.css"
+import Styles from "./styles/TextInputWithValidation.module.less"
+import { Input } from 'antd'
+import { Space, Typography } from 'antd';
 interface TextInputWithValidationProps {
   validationPattern?: RegExp;
   validationFunction?: (value: string) => string | null;
   errorMessage?: string;
   inputType?: string;
-  valueSetter?: (value: string) => void,
-  setFormValid?: (value: boolean) => void
+  valueSetter?: (value: string, isValid: boolean) => void
 }
 
 interface TextInputWithValidationState {
@@ -40,31 +41,27 @@ class TextInputWithValidation extends React.Component<TextInputWithValidationPro
     } else if (validationFunction) {
       errorMessage = validationFunction(value);
     }
-    if (errorMessage) {
-      this.props.setFormValid?.(false);
-    } else {
-      this.props.setFormValid?.(true);
-    }
     this.setState({
       value,
       errorMessage,
     });
-    this.props.valueSetter?.(value);
+    this.props.valueSetter?.(value, !errorMessage);
   }
 
   render() {
     const { inputType } = this.props;
     const { value, errorMessage } = this.state;
-
+    const { Text, Link } = Typography;
     return (
-      <div className='tbv-input-container'>
-        <input className="default-input" type={inputType || "text"} value={value} onChange={this.handleChange} />
-        <div 
-          className='tbv-error' 
+      <div className= { Styles['tbv-input-container'] } >
+        <Input status = {errorMessage ? "error" : ""} type = { inputType || "text" } value={value} onChange={this.handleChange} />
+        <Text 
+          type="danger"
+          className= { Styles['tbv-error']} 
           style={{ visibility:  errorMessage ? "visible" : "hidden" }}
         >
           {errorMessage ?? "no erros"}
-        </div>
+        </Text>
       </div>
     );
   }

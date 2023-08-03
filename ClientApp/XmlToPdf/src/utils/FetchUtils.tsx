@@ -1,4 +1,4 @@
-import PopupUtils from "../shared/PopupUtils";
+import PopupUtils from "./PopupUtils";
 
 const getToken = () => {
     const tokenString = localStorage.getItem('token');
@@ -18,16 +18,17 @@ class FetchUtils {
         if (token) {
             headers.set("Authorization", 'Bearer ' + token);
         }
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve, rejectRequest) => {
             fetch(path, {
                 method: method,
                 body: method === "GET" ? null : JSON.stringify(body),
                 headers: headers
               })
-            .then((response) => {
+            .then(async (response) => {
                 let error;
                 switch (response.status) {
                     case 200:
+                    case 201:
                         switch (responseType) {
                             case "JSON":
                                 return response.json();
@@ -40,12 +41,20 @@ class FetchUtils {
                         }
                         break;
                     case 400:
-                        response.json().then((res) => {
+                        let getContentTypeIs = (type: string) => response.headers.get("content-type")?.includes(type);
+                        if (getContentTypeIs("application/json")) {
+                            let res = await response.json();
                             if (res && res[0] && res[0].description) {
-                                reject(res[0].description);
+                                rejectRequest(res[0].description);
+                            } else {
+                                rejectRequest("Validation error")
                             }
-                        });
-                        error = "Validation error";
+                            
+                        } else if (getContentTypeIs("text/plain")) {
+                            let res = await response.text();
+                            rejectRequest(res);
+                            
+                        }
                         break;
                     case 401:
                         error = "Unauthorized request";
@@ -67,7 +76,7 @@ class FetchUtils {
                         
                 }
                 if (error) {
-                    reject(error);
+                    rejectRequest(error);
                 }
             })
             .then((data) => {
@@ -81,7 +90,7 @@ class FetchUtils {
             })
             .catch((err) => {
                 if(err.message) {
-                    reject(err.message);
+                    rejectRequest(err.message);
                 }
             })
         });

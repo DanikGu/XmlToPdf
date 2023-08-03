@@ -6,7 +6,7 @@ import {
   Route,
   Link
 } from "react-router-dom";
-import './index.css'
+import { ConfigProvider } from 'antd';
 import LoginPage from './pages/login/LoginPage';
 import EditorPage from './pages/editor/EditorPage';
 import useToken from './utils/useToken';
@@ -17,16 +17,21 @@ function App() {
 
 
   if(!token) {
-    return <LoginPage setToken={setToken} />
+    return (
+      <ConfigProvider theme={{ token: { colorPrimary: '#62baab'} }}>
+        <LoginPage setToken={setToken} />
+      </ConfigProvider>
+    )
   }
   return (
     <div className="App">
-      <Router>
-        <Routes>
-          <Route path="/" Component={EditorPage}></Route>
-        </Routes>
-    </Router>
-    
+      <ConfigProvider theme={{ token: { colorPrimary: '#62baab'} }}>
+        <Router>
+          <Routes>
+            <Route path="/" Component={EditorPage}></Route>
+          </Routes>
+        </Router>
+      </ConfigProvider>
     </div>
   )
 }
